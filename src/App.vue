@@ -1,10 +1,10 @@
 <script>
 import { ref, watch } from 'vue'
-import createDeck from './features/createDeck'
-import createGame from './features/createGame'
+import createDeck from './components/createDeck'
+import createGame from './components/createGame'
 import GameBoard from './components/GameBoard'
 import NewGameButton from './components/NewGameButton'
-import halloweenDeck from './data/halloweenDeck.json'
+import halloweenDeck from './components/Deck.json'
 
 export default {
   name: 'App',
