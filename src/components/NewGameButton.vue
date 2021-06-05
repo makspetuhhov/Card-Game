@@ -25,10 +25,6 @@ export default {
         :class="$style['icon-play']"
         src="/images/play.svg"
         alt="Play Icon"
-      /><img
-        :class="$style['icon-ghost']"
-        src="/images/cute-ghost.svg"
-        alt="Cute Ghost"
       />
     </div>
     Start Game

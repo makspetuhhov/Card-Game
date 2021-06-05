@@ -4,7 +4,7 @@ import createDeck from './components/createDeck'
 import createGame from './components/createGame'
 import GameBoard from './components/GameBoard'
 import NewGameButton from './components/NewGameButton'
-import halloweenDeck from './components/Deck.json'
+import Deck from './components/Deck.json'
 
 export default {
   name: 'App',
@@ -13,7 +13,7 @@ export default {
     NewGameButton
   },
   setup() {
-    const { cardList } = createDeck(halloweenDeck)
+    const { cardList } = createDeck(Deck)
     const {
       newPlayer,
       startGame,
@@ -59,6 +59,10 @@ export default {
           if (cardOne.faceValue === cardTwo.faceValue) {
             cardList.value[cardOne.position].matched = true
             cardList.value[cardTwo.position].matched = true
+                this.$delete(this.arr, cardList)
+
+    
+          
           } else {
             setTimeout(() => {
               cardList.value[cardOne.position].visible = false
@@ -168,5 +172,49 @@ a:hover {
 
 .shuffle-card-move {
   transition: transform 0.8s ease-in;
+}
+
+
+
+.card {
+  position: relative;
+  transition: 0.5s transform ease-in;
+  transform-style: preserve-3d;
+}
+
+.card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+}
+
+.card-face.is-front {
+  background-image: url('/images/card-bg.png');
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.card-face.is-back {
+  background-image: url('/images/card-bg-empty.png');
+  color: white;
+}
+
+.card-image {
+  max-width: 100%;
+}
+
+.icon-checkmark {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
 }
 </style>
